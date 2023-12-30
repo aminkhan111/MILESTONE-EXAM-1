@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move the Image</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+       
+            #movingImage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px; /* Set your desired width */
+            height: auto; /* Maintain aspect ratio */
+            border: 10px solid #dd9898; /* Border color */
+            border-radius: 45px; /* Adjust the border radius for soft corners */
+            transition: 3.01s ease;/* Optional: Add smooth transition effect */
+
+        }
+    </style>
+</head>
+<body>
+    <img id="movingImage" src="abc.jpg" alt="Moving Image">
+
+    <script>
+        const movingImage = document.getElementById('movingImage');
+        let posX = 50; // Initial X position (percentage)
+        let posY = 50; // Initial Y position (percentage)
+        
+
+        document.addEventListener('keydown', (event) => {
+            // Arrow key codes: 37 (left), 38 (up), 39 (right), 40 (down)
+            switch (event.keyCode) {
+                case 37: // Left arrow key
+                    posX -= 5;
+                    break;
+                case 38: // Up arrow key
+                    posY -= 5;
+                    break;
+                case 39: // Right arrow key
+                    posX += 5;
+                    break;
+                case 40: // Down arrow key
+                    posY += 5;
+                    break;
+            }
+
+
+            // Update image position
+            movingImage.style.left = `${posX}%`;
+            movingImage.style.top = `${posY}%`;
+        });
+    </script>
+</body>
+</html>

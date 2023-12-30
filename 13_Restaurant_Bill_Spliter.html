@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Order System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(194, 238, 235, 0.966);
+             background-image: url(a3.jpg);
+             background-repeat: no-repeat;
+             /* background-size: cover; */
+             background-size: contain;
+                
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+
+            box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+                10px 10px 70px rgba(0, 0, 0, 0.25),
+                inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+                inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+                inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+                inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+        }
+
+        .dish-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Restaurant Order System</h2>
+
+        <div id="orderItems">
+            <!-- Dish order items will be dynamically added here -->
+        </div>
+
+        <button onclick="addDish()">Add Dish</button>
+        <button onclick="calculateBill()">Calculate Bill</button>
+
+        <h3>Bill Details:</h3>
+        <p id="billDetails"></p>
+
+        <label for="numPeople">Number of People:</label>
+        <input type="number" id="numPeople" min="1" value="1">
+
+        <h3>Individual Share:</h3>
+        <p id="individualShare"></p>
+    </div>
+
+    <script>
+        let orderCount = 1;
+
+        function addDish() {
+            const orderItems = document.getElementById('orderItems');
+
+            const newDishItem = document.createElement('div');
+            newDishItem.classList.add('dish-item');
+
+            newDishItem.innerHTML = `
+                <label for="dish${orderCount}">Select Dish:</label>
+                <select id="dish${orderCount}">
+                    <option value="pasta">Pasta</option>
+                    <option value="pizza">Pizza</option>
+                    <option value="burger">Burger</option>
+                    <!-- Add more dishes as needed -->
+                </select>
+
+                <label for="quantity${orderCount}">Number of Dishes:</label>
+                <input type="number" id="quantity${orderCount}" min="1" value="1">
+            `;
+
+            orderItems.appendChild(newDishItem);
+            orderCount++;
+        }
+
+        function calculateBill() {
+            const orderItems = document.getElementById('orderItems').children;
+            let totalPrice = 0;
+
+            for (let i = 0; i < orderItems.length; i++) {
+                const dish = orderItems[i].querySelector(`#dish${i + 1}`).value;
+                const quantity = parseInt(orderItems[i].querySelector(`#quantity${i + 1}`).value);
+
+                // Dummy prices for demonstration purposes
+                const dishPrices = {
+                    pasta: 10,
+                    pizza: 15,
+                    burger: 8,
+                };
+
+                totalPrice += quantity * dishPrices[dish];
+            }
+
+            const numPeople = parseInt(document.getElementById('numPeople').value);
+
+            const BillDetails = `Total Bill: $${totalPrice.toFixed(2)}`;
+            const IndividualShare = `Individual Share: $${(totalPrice / numPeople).toFixed(2)}`;
+
+            document.getElementById('billDetails').innerHTML = BillDetails;
+            document.getElementById('individualShare').innerHTML = IndividualShare;
+        }
+    </script>
+</body>
+</html>

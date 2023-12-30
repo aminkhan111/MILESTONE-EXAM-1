@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Color on Click</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #colorButton {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 15px;
+            color: blueviolet;
+            font-size: large;
+            background-color: beige;
+        }
+    </style>
+</head>
+<body>
+    <button id="colorButton">Change Color</button>
+
+    <script>
+        // Array of colors
+        const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c', '#e67e22'];
+
+        // Function to change the background color
+        function changeBackgroundColor() {
+            // Get a random index from the colors array
+            const randomIndex = Math.floor(Math.random() * colors.length);
+
+            // Get the selected color
+            const selectedColor = colors[randomIndex];
+
+            // Change the background color of the body
+            document.body.style.backgroundColor = selectedColor;
+        }
+
+        // Attach the click event to the button
+        const colorButton = document.getElementById('colorButton');
+        colorButton.addEventListener('click', changeBackgroundColor);
+    </script>
+</body>
+</html>

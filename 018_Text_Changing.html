@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Text Toggle</title>
+<style>
+    body {
+        text-align: center; /* Center-aligns text within the body */
+        margin: 20vh 0; /* Adjusts the top margin for centering */
+        font-family: Arial, sans-serif; /* Optional: Choose a font */
+    }
+
+    #heading {
+        color: #333; /* Optional: Sets the text color */
+    }
+
+    #toggleButton {
+        margin-top: 20px; /* Adds space between the heading and the button */
+        padding: 15px 25px; /* Sets padding for the button */
+        font-size: 19px; /* Sets the font size of the button text */
+        background-color: #3498db; /* Sets the background color of the button */
+        color: #fff; /* Sets the text color of the button */
+        border: none; /* Removes button border */
+        cursor: pointer; /* Changes cursor to a pointer on hover */
+        border-radius: 12px;
+    }
+
+    #toggleButton:hover {
+        background-color: #2980b9; /* Changes background color on hover */
+    }
+</style>
+</head>
+<body>
+  <h1 id="heading">Where You Found The Most Affordable Learning Platform</h1>
+  <button id="toggleButton">Click To Find</button>
+  <script>
+     const heading = document.getElementById("heading");
+const toggleButton = document.getElementById("toggleButton");
+
+toggleButton.addEventListener("click", () => {
+  if (heading.textContent === "Where You Found The Most Affordable Learning Platform") {
+    heading.textContent = "PW Skills";
+}
+  else if (heading.textContent === "PW Skills") {
+    heading.textContent = "Where You Found The Most Affordable Learning Platform";
+  }
+   else {
+    heading.textContent = "The most affordable learning platform";
+  }
+});
+
+// <--!// ////////// OR //////////////////
+
+// <script>
+//     // Get references to the heading and button elements using their ids
+//     var headingElement = document.getElementById('heading');
+//     var buttonElement = document.getElementById('toggleButton');
+
+//     // Set initial text and create an array of text options
+//     var initialText = "The most affordable learning platform";
+//     var newText = "PW Skills";
+//     var textOptions = [initialText, newText];
+//     var currentIndex = 0;
+
+//     // Function to change the heading text on button click
+//     function changeText() {
+//         // Toggle between text options
+//         currentIndex = (currentIndex + 1) % textOptions.length;
+       
+// // (currentIndex + 1) % textOptions.length;: Increments the index and uses the modulo operator to ensure it stays within the bounds of the array.
+// // Update Heading Text:
+
+
+        
+//         // Set the heading text to the current option
+//         headingElement.textContent = textOptions[currentIndex];
+//     }
+
+//     // Attach the changeText function to the button's click event
+//     buttonElement.addEventListener('click', changeText);
+// </script>
+
+  </script>
+</body>
+</html>
+
+
+

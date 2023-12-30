@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Highlighting</title>
+    <style>
+        /* Style for highlighted words */
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <p id="paragraph">
+        This is a sample paragraph with words of varying lengths. Some words are short, and others are longer. We want to highlight words that are greater than 8 characters.
+    </p>
+
+    <script>
+        // Function to highlight words greater than 8 characters
+        function highlightWords() {
+            // Get the paragraph element
+            const paragraph = document.getElementById('paragraph');
+
+            // Split the text into an array of words
+            const words = paragraph.textContent.split(/\s+/);
+
+            // Iterate through each word
+            for (const word of words) {
+                // Check if the word has more than 8 characters
+                if (word.length > 8) {
+                    // Create a span element for the highlighted word
+                    const span = document.createElement('span');
+                    span.className = 'highlight';
+                    span.textContent = word + ' ';
+
+                    // Replace the original word in the paragraph with the highlighted span
+                    paragraph.innerHTML = paragraph.innerHTML.replace(word + ' ', span.outerHTML);
+                }
+            }
+        }
+
+        // Call the highlightWords function when the page loads
+        window.onload = highlightWords;
+    </script>
+</body>
+</html>

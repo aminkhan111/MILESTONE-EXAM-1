@@ -1,0 +1,113 @@
+<!-- 019_login _validation.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+
+    <style>
+
+        body {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100vh;
+                    margin: 0;
+                    background-color: #79c8f0e4;
+                }
+        
+                form{
+                    width: 400px;
+                    padding: 20px;
+                    background-color: white;
+                    border-radius: 8px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                
+                }
+                label {
+                    display: block;
+                    margin-bottom: 10px;
+                }
+        
+                input {
+                    width: 100%;
+                    padding: 10px;
+                    margin-bottom: 20px;
+                    box-sizing: border-box;
+                }
+        
+                button {
+                    background-color: #4caf50;
+                    color: white;
+                    padding: 10px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+        
+                .error {
+                    color: red;
+                }
+        
+                .success {
+                    color: green;
+                }
+            </style>
+</head>
+<body>
+    
+<form id="loginForm">
+    <label for="emil">Email:</label>
+    <input type="text" id="email" name ="email" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <br>
+
+    <button type="button" onclick="validateForm()">Submit</button>
+</form>
+
+<p id="validationMessage"></p>
+
+<script>
+function validationForm(){
+// Get Validation from the input fields 
+
+const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+// Regular expression to check if the email contains the "@" symbol
+const emailRegex = /\S+@\S+\.\S+/;
+
+ // Check email and password conditions
+ if (!emailRegex.test(email) || password.length < 8) {
+                displayMessage('Invalid email or password!', 'error');
+            } else {
+                displayMessage('Valid email and password!', 'success');
+            }
+
+
+function displayMessage(message,messageType){
+    const validationMessage =document.getelementById('validationMessage');
+
+    // set the message text and style  
+
+    validationMessage.textContent = message;
+    validationMessage.className = messageType;
+}
+
+
+}
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
